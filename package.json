@@ -1,0 +1,23 @@
+{
+  "name": "brainfucker",
+  "version": "0.1.0",
+  "description": "A Brainfuck interpreter.",
+  "main": "main.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node main.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "yes"
+  },
+  "author": "Luke White <luke_white@yahoo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "bin": {
+    "brainfucker": "./bin/run-main"
+  }
+}
