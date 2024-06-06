@@ -2,8 +2,11 @@
 
 import { compile } from './compiler';
 
+const logger = require('node-color-log');
+const fs = require('node:fs');
+
 function printHelp() {
-    console.log(`brainfucker 0.1.0
+    logger.log(`brainfucker 0.1.0
 Luke White <luke_white@yahoo.com>
 A Brainfuck interpreter written in Typescript
 
@@ -19,21 +22,25 @@ Options:
 
 function main() {
     const args = process.argv;
-    const fs = require('node:fs');
-    
+
     const arg1: string = args[2];
-    
+
     if (arg1 == "--help" || arg1 == "-h") {
         printHelp();
         return;
     }
 
     if (arg1 == undefined) {
-        console.log("No args\n");
+        logger.color('red').log("No args\n");
         printHelp();
         return;
     }
-    
+
+    if (!fs.existsSync(arg1)) {
+        logger.color('red').log("File does not exist");
+        return;
+    }
+
     const data = fs.readFileSync(arg1, 'utf-8');
     compile(data);
 }

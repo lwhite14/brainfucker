@@ -14,6 +14,7 @@
   "author": "Luke White <luke_white@yahoo.com>",
   "license": "MIT",
   "dependencies": {
+    "node-color-log": "^12.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
