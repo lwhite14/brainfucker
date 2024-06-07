@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-import { compile } from './compiler';
+import { interpret } from './interpreter';
 
 const logger = require('node-color-log');
 const fs = require('node:fs');
@@ -42,7 +42,7 @@ function main() {
     }
 
     const data = fs.readFileSync(arg1, 'utf-8');
-    compile(data);
+    interpret(data);
 }
 
 
