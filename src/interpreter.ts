@@ -1,3 +1,5 @@
+const prompt = require('prompt-sync')();
+
 class Interpreter {
     currentToken: number;
     pointer: number;
@@ -62,7 +64,21 @@ class Interpreter {
     }
 
     runGetChar() {
-
+        let cond: boolean = true;
+        while (cond) {
+            process.stdout.write("\n");
+            const input = prompt('> ');
+            if (input == null) {
+                console.log("exiting...");
+                process.exit(0);
+            }
+            else if (input.length == 1) {
+                cond = false;
+                this.values[this.pointer] = input.charCodeAt(0);
+            } else {
+                console.log("!!");
+            }
+        }
     }
 
     runPutChar() {
