@@ -10,13 +10,14 @@ function printHelp() {
 Luke White <luke_white@yahoo.com>
 A Brainfuck interpreter written in Typescript
 
-Usage: brainfucker [OPTIONS] <source_file>
+Usage: brainfucker [-h|--help] <source_file> [-d|--dump]
 
 Arguments:
     <source_file>  The source file name/filepath
 
 Options:
-    -h, --help            Print help`);
+    -h, --help     Print help
+    -d  --dump     Log contents of all cells`);
 }
 
 
@@ -24,6 +25,9 @@ function main() {
     const args = process.argv;
 
     const arg1: string = args[2];
+    const arg2: string = args[3];
+
+    let dumpValues: boolean = false;
 
     if (arg1 == "--help" || arg1 == "-h") {
         printHelp();
@@ -41,8 +45,12 @@ function main() {
         return;
     }
 
+    if (arg2 == "-d" || arg2 == "--dump") {
+        dumpValues = true;
+    }
+
     const data = fs.readFileSync(arg1, 'utf-8');
-    interpret(data);
+    interpret(data, dumpValues);
 }
 
 

@@ -89,7 +89,19 @@ class Interpreter {
 
 
 
-export function interpret(source: string) {
+export function interpret(source: string, dumpValues: boolean) {
     let interpreter: Interpreter = new Interpreter();
     interpreter.interpret(source);
+
+    if (dumpValues) {
+        console.log("\n    dump: ");
+        for (let i = 0; i < interpreter.values.length; i++) {
+            if (i == interpreter.values.length - 1) {
+                process.stdout.write(String(interpreter.values[i]));
+            } else {
+                process.stdout.write(String(interpreter.values[i]) + ",");
+            }
+        }
+        process.stdout.write("\n");
+    }
 }
