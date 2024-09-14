@@ -6,7 +6,7 @@ const logger = require('node-color-log');
 const fs = require('node:fs');
 
 function printHelp() {
-    logger.log(`brainfucker 0.1.0
+    logger.color('white').log(`brainfucker 0.1.0
 Luke White <luke_white@yahoo.com>
 A Brainfuck interpreter written in Typescript
 
